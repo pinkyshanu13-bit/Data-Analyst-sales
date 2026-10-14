@@ -1,0 +1,31 @@
+Order Date,Region,Category,Product,Units Sold,Unit Price,Unit Cost
+2026-01-03,North,Electronics,Headphones,12,1800,1100
+2026-01-08,South,Home,Desk Lamp,20,650,320
+2026-01-12,East,Office,Notebook Pack,35,240,120
+2026-01-18,West,Electronics,Keyboard,14,1200,700
+2026-01-25,North,Home,Water Bottle,28,350,150
+2026-02-02,South,Electronics,Mouse,25,550,250
+2026-02-07,East,Home,Desk Lamp,18,650,320
+2026-02-11,West,Office,Notebook Pack,42,240,120
+2026-02-19,North,Electronics,Headphones,16,1800,1100
+2026-02-24,South,Home,Water Bottle,31,350,150
+2026-03-04,East,Electronics,Keyboard,21,1200,700
+2026-03-09,West,Home,Desk Lamp,24,650,320
+2026-03-14,North,Office,Notebook Pack,50,240,120
+2026-03-20,South,Electronics,Headphones,19,1800,1100
+2026-03-28,East,Home,Water Bottle,37,350,150
+2026-04-05,West,Electronics,Mouse,33,550,250
+2026-04-10,North,Home,Desk Lamp,27,650,320
+2026-04-16,South,Office,Notebook Pack,55,240,120
+2026-04-22,East,Electronics,Headphones,22,1800,1100
+2026-04-29,West,Home,Water Bottle,40,350,150
+2026-05-03,North,Electronics,Keyboard,26,1200,700
+2026-05-09,South,Home,Desk Lamp,32,650,320
+2026-05-15,East,Office,Notebook Pack,61,240,120
+2026-05-21,West,Electronics,Headphones,24,1800,1100
+2026-05-27,North,Home,Water Bottle,43,350,150
+2026-06-02,South,Electronics,Mouse,38,550,250
+2026-06-08,East,Home,Desk Lamp,29,650,320
+2026-06-14,West,Office,Notebook Pack,68,240,120
+2026-06-20,North,Electronics,Headphones,30,1800,1100
+2026-06-26,South,Home,Water Bottle,46,350,150

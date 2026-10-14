@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Analytics Dashboard</title><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fc;color:#172033;font-family:Segoe UI,Arial,sans-serif}
+header{padding:30px 5vw 35px;background:linear-gradient(120deg,#172554,#3559e0);color:white}
+header small{letter-spacing:2px;text-transform:uppercase;opacity:.8}h1{margin:9px 0;font-size:clamp(26px,4vw,38px)}header p{margin:0;opacity:.85}
+main{max-width:1200px;width:92%;margin:25px auto}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}
+.card,.panel{background:white;border:1px solid #e5eaf3;border-radius:16px;padding:20px;box-shadow:0 6px 20px #1725540a}
+.label{color:#6b7487;font-size:13px;margin-bottom:10px}.value{font-size:clamp(21px,2.7vw,30px);font-weight:750;overflow-wrap:anywhere}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}.panel h2{font-size:17px;margin:0 0 18px}.chart{height:270px}
+.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}td,th{text-align:left;padding:12px 10px;border-bottom:1px solid #e8edf5}th{color:#68738a;background:#fafbfe}
+footer{text-align:center;color:#68738a;padding:8px 0 30px;font-size:12px}
+@media(max-width:800px){.cards{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}}@media(max-width:430px){.cards{grid-template-columns:1fr}}
+</style></head><body>
+<header><small>Python · Flask · Pandas · Chart.js</small><h1>Sales Analytics Dashboard</h1><p>A clear view of revenue, profitability and sales performance.</p></header>
+<main>
+<section class="cards">
+<div class="card"><div class="label">TOTAL REVENUE</div><div class="value">₹{{ revenue }}</div></div>
+<div class="card"><div class="label">TOTAL PROFIT</div><div class="value">₹{{ profit }}</div></div>
+<div class="card"><div class="label">UNITS SOLD</div><div class="value">{{ units }}</div></div>
+<div class="card"><div class="label">TOP REVENUE CATEGORY</div><div class="value">{{ top_category }}</div></div>
+</section>
+<section class="charts">
+<div class="panel"><h2>Monthly Revenue</h2><div class="chart"><canvas id="monthly"></canvas></div></div>
+<div class="panel"><h2>Revenue by Category</h2><div class="chart"><canvas id="category"></canvas></div></div>
+<div class="panel"><h2>Profit by Region</h2><div class="chart"><canvas id="region"></canvas></div></div>
+<div class="panel"><h2>Business Insight</h2><p><strong>{{ top_region }}</strong> is the leading region by total profit.</p><p style="color:#68738a;line-height:1.7">Use these charts to compare sales trends and identify strong product categories. This project uses fictional sample data for demonstration.</p></div>
+</section>
+<section class="panel"><h2>Recent Sales Records</h2><div class="tablewrap"><table><thead><tr><th>Date</th><th>Region</th><th>Product</th><th>Units</th><th>Revenue (₹)</th><th>Profit (₹)</th></tr></thead><tbody>
+{% for r in records %}<tr><td>{{r["Order Date"]}}</td><td>{{r["Region"]}}</td><td>{{r["Product"]}}</td><td>{{r["Units Sold"]}}</td><td>{{"{:,.2f}".format(r["Revenue"])}}</td><td>{{"{:,.2f}".format(r["Profit"])}}</td></tr>{% endfor %}
+</tbody></table></div></section></main><footer>Sales Data Analysis · Portfolio Demo</footer>
+<script>
+const months={{months|tojson}}, mv={{monthly_values|tojson}}, cl={{category_labels|tojson}}, cv={{category_values|tojson}}, rl={{region_labels|tojson}}, rv={{region_values|tojson}};
+new Chart(document.getElementById('monthly'),{type:'line',data:{labels:months,datasets:[{label:'Revenue (₹)',data:mv,tension:.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+new Chart(document.getElementById('category'),{type:'bar',data:{labels:cl,datasets:[{label:'Revenue (₹)',data:cv}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+new Chart(document.getElementById('region'),{type:'bar',data:{labels:rl,datasets:[{label:'Profit (₹)',data:rv}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+</script></body></html>
